@@ -23,6 +23,16 @@ void gotoxy(int x, int y){
 	SetConsoleCursorPosition(hCon,dwPos);
 }
 
+void ocultarCursor(){
+	HANDLE hCon;
+	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cci;
+	cci.dwSize = 2;
+	cci.bVisible = FALSE;  //mostrara cursor en pantalla
+
+	SetConsoleCursorInfo(hCon,&cci);
+}
+
 void mapa(){
 	for(int i=2; i<78; i++){
 		gotoxy(i,3);
@@ -43,5 +53,22 @@ void mapa(){
 }
 
 int main(){
+     ocultarCursor();
 	mapa();
+
+     gotoxy(15,10); printf("*");
+     int x = 10, y = 10;
+
+     bool game_over = false;
+     while(!game_over){
+          gotoxy(x,y); printf("*");
+          if(kbhit()){
+               char tecla = getch();
+               if(tecla == 'j') x--;
+               if(tecla == 'l') x++;
+               if(tecla == 'i') y--;
+               if(tecla == 'k') y++;
+          }
+     }
+	return 0;
 }
