@@ -52,6 +52,12 @@ void mapa(){
 	gotoxy(77,33); printf("%c",188);
 }
 
+void NAVE::pintar(){
+	gotoxy(x,y); printf(" %c",94);
+	gotoxy(x-1,y+1); printf("%c%c%c%c%c",91,00,70,00,93);
+	gotoxy(x-3,y+2); printf(" %c%c%c%c%c%c%c",201,00,206,00,206,00,187);
+}
+
 int main(){
      ocultarCursor();
 	mapa();
