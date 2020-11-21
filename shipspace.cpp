@@ -52,10 +52,42 @@ void mapa(){
 	gotoxy(77,33); printf("%c",188);
 }
 
+
+class NAVE{
+	int x, y;
+	int corazones;
+	int vidas;
+public:
+
+};
+
+
 void NAVE::pintar(){
 	gotoxy(x,y); printf(" %c",94);
 	gotoxy(x-1,y+1); printf("%c%c%c%c%c",91,00,70,00,93);
 	gotoxy(x-3,y+2); printf(" %c%c%c%c%c%c%c",201,00,206,00,206,00,187);
+}
+
+void NAVE::borrar(){
+	gotoxy(x,y); printf("        ");
+	gotoxy(x-1,y+1); printf("         ");
+	gotoxy(x-3,y+2); printf("          ");
+}
+
+void NAVE::mover(){
+	if(kbhit()){
+		char tecla = getch();
+		borrar();
+		gotoxy(x,y);
+			printf(" ");
+		if(tecla == IZQUIERDA && x>8) x--;
+		if(tecla == DERECHA && x+8 < 77) x++;
+		if(tecla == ARRIBA && y>4) y--;
+		if(tecla == ABAJO && y+5 < 33) y++;
+		if(tecla == 'e') corazones--;
+		pintar();
+		corazao();
+	}
 }
 
 int main(){
