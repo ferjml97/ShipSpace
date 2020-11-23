@@ -90,6 +90,19 @@ void NAVE::mover(){
 	}
 }
 
+class ASTEROID{
+	int x;
+	int y;
+public:
+	ASTEROID(int _x, int _y):x(_x), y(_y){}
+	int X(){ return x; }
+	int Y(){ return y; }
+	//void pintar();
+	//void mover();
+	//void colision(class NAVE &N);
+
+	//strct  o class funciona igual
+};
 int main(){
      ocultarCursor();
 	mapa();
