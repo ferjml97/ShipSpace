@@ -103,6 +103,33 @@ public:
 
 	//strct  o class funciona igual
 };
+
+void ASTEROID::pintar(){
+	gotoxy(x,y); printf("%c",184);
+}
+
+void ASTEROID::mover(){
+	gotoxy(x,y); printf(" ");
+	y++;
+	if(y > 32){
+		x = rand()%73 + 4;
+		y = 4;
+	}
+
+	pintar();
+}
+
+void ASTEROID::colision(class NAVE &N){
+	if(x >= N.X()-3 && x < N.X()+3 && y >= N.Y() && y < N.Y()+3){
+		N.vida();
+		N.borrar();
+		N.pintar();
+		N.corazao();
+		x = rand()%71 + 4;
+		y = 4;
+	}
+}
+
 int main(){
      ocultarCursor();
 	mapa();
