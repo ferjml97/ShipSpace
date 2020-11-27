@@ -130,6 +130,26 @@ void ASTEROID::colision(class NAVE &N){
 	}
 }
 
+
+class BULLET{
+	int x;
+	int y;
+public:
+	BULLET(int _x, int _y): x(_x), y(_y){}
+	int X(){ return x; }
+	int Y(){ return y; }
+	void bmover();
+	bool fuera();
+};
+
+void BULLET::bmover(){
+	gotoxy(x,y);
+		printf(" ");
+	y--;
+	gotoxy(x,y);
+		printf("*");
+}
+
 int main(){
      ocultarCursor();
 	mapa();
