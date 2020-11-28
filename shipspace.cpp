@@ -150,6 +150,30 @@ void BULLET::bmover(){
 		printf("*");
 }
 
+class BULLET2{
+	int x;
+	int y;
+public:
+	BULLET2(int _x, int _y): x(_x), y(_y){}
+	int X(){ return x; }
+	int Y(){ return y; }
+	void b2mover();
+	bool b2fuera();
+};
+
+void BULLET2::b2mover(){
+	gotoxy(x,y);
+		printf(" ");
+	y--;
+	gotoxy(x,y);
+		printf("*");
+}
+
+bool BULLET2::b2fuera(){
+	if(y == 4) return true;
+	return false;
+}
+
 int main(){
      ocultarCursor();
 	mapa();
